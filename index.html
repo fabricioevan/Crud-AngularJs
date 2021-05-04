@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Projeto AngularJS</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
+    <script src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+    <script src="node_modules\angular\angular.min.js"></script>
+    <script src="node_modules\angular-route\angular-route.min.js"></script>
+    <script src="projeto-app.js"></script>
+    <script src="projeto-router.js"></script>
+    <script src="projeto-service.js"></script>
+    <script src="cadastro/cadastro-controller.js"></script>
+    <script src="home/home-controller.js"></script>
+    <script src="componente/componente-alert.js"></script>
+
+
+
+    <link rel="shortcut icon" href="assets\favicon.ico">
+    <script>
+        angular.module("app").controller("appController", function() {
+            vm = this;
+            vm.ola = "projeto AngularJS"
+            vm.teste = "teste"
+            console.log(this.ola)
+        })
+    </script>
+</head>
+
+<body ng-app="app">
+    <script>
+        angular.module('app').controller('MenuController', MenuController);
+        MenuController.$inject = ['$location'];
+
+        function MenuController($location) {
+            vm = this
+            vm.itensMenu = [{
+                titulo: 'Home',
+                class: 'nav-link active'
+            }, {
+                titulo: 'Cadastro',
+                class: 'nav-link'
+            }]
+            vm.navegar = function(rota, array) {
+                angular.forEach(array, function(item) {
+                    if (item.titulo == rota) {
+                        item.class = 'nav-link active'
+                    } else {
+                        item.class = 'nav-link'
+                    }
+                })
+                $location.path(rota)
+            }
+        }
+    </script>
+    <div class="container" style="margin-top: 18px;">
+        <div ng-controller="MenuController as vm">
+            <ul class="nav nav-tabs">
+                <li class="nav-item" ng-repeat="item in vm.itensMenu">
+                    <a ng-class="item.class" ng-click="vm.navegar(item.titulo, vm.itensMenu)">{{item.titulo}}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div ng-view></div>
+    </div>
+</body>
+
+</html>

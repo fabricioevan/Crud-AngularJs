@@ -1,0 +1,24 @@
+{
+  "clientes": [
+    {
+      "nome": "Fabrício Evangelista",
+      "rg": "6154157",
+      "id": 1
+    },
+    {
+      "nome": "Pré-venda",
+      "rg": "61541",
+      "id": 2
+    },
+    {
+      "nome": "teste2",
+      "rg": "6154157",
+      "id": 3
+    },
+    {
+      "nome": "azul",
+      "rg": "6154157",
+      "id": 4
+    }
+  ]
+}
